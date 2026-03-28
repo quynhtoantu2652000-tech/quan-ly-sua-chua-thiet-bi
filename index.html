@@ -1019,7 +1019,16 @@ function updateFbStatus(connected){
 function initFirebase(){
   try{
     if(FIREBASE_CONFIG.apiKey==='YOUR_API_KEY'){console.log('Demo mode');return false}
-    firebase.initializeApp(FIREBASE_CONFIG);
+    const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyXXXXXXX",
+  authDomain: "ten-project.firebaseapp.com",
+  projectId: "ten-project",
+  storageBucket: "ten-project.appspot.com",
+  messagingSenderId: "123456789",
+  appId: "1:123456:web:abc"
+};
+
+firebase.initializeApp(FIREBASE_CONFIG);
     db=firebase.firestore(); auth=firebase.auth();
 
     // ── Requests ──
