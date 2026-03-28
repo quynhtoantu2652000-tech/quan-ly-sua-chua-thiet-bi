@@ -1121,7 +1121,10 @@ async function handleLogin(){
   btn.innerHTML='<span class="spinner"></span>';btn.disabled=true;errEl.style.display='none';
   try{
     if(useFirebase){
-      await auth.signInWithEmailAndPassword(`${empId.toLowerCase()}@company.com`,pass);
+    
+if (userData.password !== pass) throw new Error('Sai mật khẩu');
+
+currentUser = { id: snap.docs[0].id, ...userData };
       const snap=await db.collection('users').where('employee_id','==',empId).limit(1).get();
       if(snap.empty)throw new Error('Không tìm thấy tài khoản');
       currentUser={id:snap.docs[0].id,...snap.docs[0].data()};
