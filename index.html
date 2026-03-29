@@ -1,3 +1,9 @@
+// AUTO FIX UPDATE → SET
+const _update = firebase.firestore.DocumentReference.prototype.update;
+
+firebase.firestore.DocumentReference.prototype.update = function(data) {
+  return this.set(data, { merge: true });
+};
 <!DOCTYPE html>
 <html lang="vi">
 <head>
